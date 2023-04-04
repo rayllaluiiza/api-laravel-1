@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\VideoController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\CategorieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::apiResource('videos', VideoController::class);
+Route::apiResource('categorias', CategorieController::class);

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateVideoRequest;
 use App\Models\Video;
 use Exception;
 
@@ -30,7 +30,7 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateVideoRequest $request)
     {
         try{
             $video = new Video();
@@ -68,7 +68,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateVideoRequest $request, $id)
     {
         try{
             $video = Video::findOrFail($id);

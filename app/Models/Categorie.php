@@ -12,4 +12,9 @@ class Categorie extends Model
     protected $fillable = ['tittle', 'color'];
 
     public $timestamps = false;
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
 }

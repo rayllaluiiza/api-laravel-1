@@ -101,4 +101,16 @@ class CategorieController extends Controller
             return response()->json(['message' => 'Erro ao excluir categoria.']);
         }
     }
+
+    public function videoByCategorie($id)
+    {
+        try{
+            $categories = Categorie::findOrFail($id);
+
+            return $categories::with('videos')->where('id', $id)->get();
+        }
+        catch(Exception $e){
+            return response()->json(['message' => 'Categoria não encontrada.'], 404);
+        }
+    }
 }

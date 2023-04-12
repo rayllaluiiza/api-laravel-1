@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::apiResource('videos', VideoController::class);
+Route::get('categorias/{id}/videos', [CategorieController::class, 'videoByCategorie']);
 Route::apiResource('categorias', CategorieController::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateVideoRequest;
+use Illuminate\Http\Request;
 use App\Models\Video;
 use Exception;
 
@@ -14,13 +15,21 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if(count(Video::all()) == 0){
-            return response()->json(['message' => 'Não há videos encontrados!'], 404);
+        $search = $request->search;
+
+        if(!empty($search)){
+            $videos = Video::where('tittle', $search)->get();
+        }
+        else{
+            $videos = Video::all();
+        }
+
+        if(count($videos) < 1){
+            return response()->json(['message' => 'Nenhum vídeo foi encontrado!'], 404);
         }
         
-        $videos = Video::all();
         return $videos;
     }
 

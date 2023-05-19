@@ -42,7 +42,7 @@ class CategorieController extends Controller
             return $categorie;
         }
         catch(Exception $e){
-            return response()->json(['message' => 'Erro ao inserir categoria!']);
+            return response()->json(['message' => 'Erro ao inserir categoria!'], 404);
         }
     }
 
@@ -60,7 +60,7 @@ class CategorieController extends Controller
             return $categorie;
         }
         catch(Exception $e){
-            return response()->json(['message' => 'Nenhuma categoria encontrada!']);
+            return response()->json(['message' => 'Nenhuma categoria encontrada!'], 404);
         }
     }
 
@@ -96,10 +96,10 @@ class CategorieController extends Controller
             $categorie = Categorie::findOrFail($id);
             $categorie->delete();
 
-            return response()->json(['message' => 'Categoria excluída com sucesso.']);
+            return response()->json(['message' => 'Categoria excluída com sucesso.'], 204);
         }
         catch(Exception $e){
-            return response()->json(['message' => 'Erro ao excluir categoria.']);
+            return response()->json(['message' => 'Erro ao excluir categoria.'], 404);
         }
     }
 

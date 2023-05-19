@@ -42,8 +42,13 @@ class VideoController extends Controller
     public function store(StoreUpdateVideoRequest $request)
     {
         try{
+            $categorie_id = $request->has('categorie_id') ? $request->categorie_id : 1;
+
             $video = new Video();
-            $video->fill($request->all());
+            $video->title = $request->title;
+            $video->description = $request->description;
+            $video->url = $request->url;
+            $video->categorie_id = $categorie_id;
             $video->save();
 
             return $video;
@@ -102,7 +107,7 @@ class VideoController extends Controller
             $video = Video::findOrFail($id);
             $video->delete();
 
-            return response()->json(['message' => 'Vídeo deletado com sucesso.'], 200);
+            return response()->json(['message' => 'Vídeo deletado com sucesso.'], 204);
         }
         catch(Exception $e){
             return response()->json(['message' => 'Não foi possível deletar o vídeo.'], 404);

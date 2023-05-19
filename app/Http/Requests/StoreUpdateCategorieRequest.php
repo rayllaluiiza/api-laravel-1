@@ -26,7 +26,7 @@ class StoreUpdateCategorieRequest extends FormRequest
     public function rules()
     {
         return [
-            'tittle' => 'required|min:3|max:255',
+            'title' => 'required|min:3|max:255',
             'color' => 'required|min:3|max:255'
         ];
     }

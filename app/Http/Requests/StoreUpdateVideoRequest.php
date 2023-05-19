@@ -26,7 +26,7 @@ class StoreUpdateVideoRequest extends FormRequest
     public function rules()
     {
         return [
-            'tittle' => 'required|min:3|max:255',
+            'title' => 'required|min:3|max:255',
             'description' => 'required|min:5|max:255',
             'url' => 'required|url|max:255'
         ];

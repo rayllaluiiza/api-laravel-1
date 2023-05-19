@@ -9,7 +9,7 @@ class Categorie extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tittle', 'color'];
+    protected $fillable = ['title', 'color'];
 
     public $timestamps = false;
 

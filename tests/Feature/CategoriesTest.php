@@ -3,10 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Categorie;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Video;
 use Illuminate\Testing\Fluent\AssertableJson;
-use PhpParser\Node\Expr\Cast;
 use Tests\TestCase;
 
 class CategoriesTest extends TestCase
@@ -105,5 +103,18 @@ class CategoriesTest extends TestCase
         $response = $this->deleteJson('/api/categorias/' . $categorie->id);
 
         $response->assertStatus(204);
+    }
+
+    public function test_if_can_user_list_video_by_categorie()
+    {
+        $categorie = Categorie::factory()->create();
+
+        $video = Video::factory()->create([
+            'categorie_id' => $categorie->id
+        ]);
+
+        $response = $this->getJson('/api/categorias/' . $categorie->id . '/videos');
+
+        $response->assertStatus(200);
     }
 }

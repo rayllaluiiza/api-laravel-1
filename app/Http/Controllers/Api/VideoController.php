@@ -20,7 +20,7 @@ class VideoController extends Controller
         $search = $request->search;
 
         if(!empty($search)){
-            $videos = Video::where('tittle', $search)->get();
+            $videos = Video::where('title', $search)->get();
         }
         else{
             $videos = Video::all();

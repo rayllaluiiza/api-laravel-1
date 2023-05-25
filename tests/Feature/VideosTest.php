@@ -113,4 +113,15 @@ class VideosTest extends TestCase
 
         $response->assertStatus(204);
     }
+
+    public function test_if_can_user_list_video_by_search_parameter()
+    {
+        $video = Video::factory()->create([
+            'title' => 'tecnologia'
+        ]);
+
+        $response = $this->getJson('/api/videos/?search=tecnologia');
+
+        $response->assertStatus(200);
+    }
 }

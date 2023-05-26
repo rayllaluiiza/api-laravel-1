@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\VideoController;
 use App\Http\Controllers\Api\CategorieController;
+use App\Http\Controllers\Api\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:api')->get('/videos', function (Request $request) {
-    //return $request->user();
-//});
+Route::post('login', [AuthController::class, 'login'])->name('login');
 
-Route::apiResource('videos', VideoController::class);
-Route::get('categorias/{id}/videos', [CategorieController::class, 'videoByCategorie']);
-Route::apiResource('categorias', CategorieController::class);
+Route::middleware('auth:sanctum')->group(function (){
+    Route::apiResource('videos', VideoController::class);
+    Route::get('categorias/{id}/videos', [CategorieController::class, 'videoByCategorie']);
+    Route::apiResource('categorias', CategorieController::class);
+});

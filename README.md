@@ -1,64 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1>API REST com Laravel</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p>O objetivo do projeto foi aplicar de forma prática os conceitos de API REST, utilizando as ferramentas e tecnologias do framework Laravel, PHP Unit e Docker.</p>
 
-## About Laravel
+<h2>💡 Como executar o projeto</h2>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h3>Clonar o repositório</h3>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+git clone https://github.com/rayllaluiiza/api-rest-laravel.git
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h3>Acessar a pasta do projeto</h3>
 
-## Learning Laravel
+```
+cd api-rest-laravel
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h3>Gerar o arquivo .env</h3>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+cp .env.example .env
+```
 
-## Laravel Sponsors
+<h3>Alterar as variáveis do banco de dados</h3>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=laravel_api
+DB_USERNAME=root
+DB_PASSWORD=root
+```
 
-### Premium Partners
+<h3>Executar os containers</h3>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
+docker-compose up -d
+```
 
-## Contributing
+<h3>Acessar o container da aplicação</h3>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+docker-compose exec app bash
+```
 
-## Code of Conduct
+<h3>Instalar as dependências do projeto</h3>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+composer install
+```
 
-## Security Vulnerabilities
+<h3>Gerar a chave do projeto</h3>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+php artisan key:generate
+```
 
-## License
+<h3>Executar as migrations</h3>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+php artisan migrate
+```
+
+<h3>Executar as seeders</h3>
+
+```
+php artisan db:seed
+```
+
+<h3>Projeto disponível através do link:</h3>
+
+```
+http://localhost:8989/
+```
+
+<h2>👤 Usuário</h2>
+<p>Para acessar as rotas da API, é necessário fazer uma requisição para <a href="http://localhost:8989/api/login">http://localhost:8989/api/login</a>, informando o e-mail e a senha. Em resposta, será fornecido um token que deverá ser enviado em todas as requisições subsequentes.</p>
+
+```
+E-mail: usuario@teste.com.br
+Senha: password
+```
+
+<h2>👩🏻‍💻 Testes</h2>
+<p>Para execução dos testes, na raíz da pasta api-laravel-1, execute o seguinte comando:</p>
+
+```
+php artisan test
+```
+
+<h2>💻 Tecnologias utilizadas</h2>
+<ul>
+    <li><a href="https://laravel.com/">Laravel</a></li>
+    <li><a href="https://www.docker.com/">Docker</a></li>
+    <li><a href="https://www.mysql.com/">MySQL</a></li>
+    <li><a href="https://phpunit.de/">PHP Unit</a></li>
+    <li><a href="https://git-scm.com/">Git</a></li>
+</ul>
